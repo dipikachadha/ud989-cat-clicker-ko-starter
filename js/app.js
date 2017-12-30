@@ -16,6 +16,8 @@ function AppViewModel () {
       default: return 'Error';
     };
   });
+
+  this.nickNames = ['Timmy', 'Tabbu', 'Tiggy'];
 }
 
 ko.applyBindings(new AppViewModel());
