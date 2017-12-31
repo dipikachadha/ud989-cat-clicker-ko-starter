@@ -68,10 +68,10 @@ function AppViewModel () {
   // differs from the returned object since it has all it's properties as KO
   // observables and has added KO functions like catLevel.
   this.catList = ko.observableArray(
-    initialCats.map(catData => {console.log(new Cat(catData)); return new Cat(catData)}));
+    initialCats.map(catData => new Cat(catData)));
   this.currentCat = ko.observable(this.catList()[0]);
 
-  console.log(this.currentCat(), this.catList());
+  this.selectThisCat = cat => this.currentCat(cat);
 
   this.incrementCounter = _ => {
     // The HTML uses with: currentCat context, and calls incrementCounter in

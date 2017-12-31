@@ -9,7 +9,7 @@
     <div>
       <h3>Cat List</h3>
       <ul id="cat-list" data-bind="foreach: catList">
-        <li data-bind="text: name"></li>
+        <li data-bind="text: name, click: $parent.selectThisCat"></li>
       </ul>
     </div>
 
