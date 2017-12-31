@@ -1,5 +1,6 @@
-const initialCats = [{
-    pic: "img/22252709_010df3379e_z.jpg",
+const initialCats = [
+  {
+    pic: "https://cdn.pixabay.com/photo/2015/02/09/15/55/cat-629821_960_720.jpg",
     clickCount: 0,
     name: "Kiki The Toy",
     nickNames: ['Kikee', 'Toy'],
