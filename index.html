@@ -5,21 +5,31 @@
     <title>Cat Clicker</title>
 </head>
 <body>
-    <ul id="cat-list"></ul>
-    <div id="cat" data-bind="with: currentCat">
+    <!-- Cat List View -->
+    <div>
+      <h3>Cat List</h3>
+      <ul id="cat-list" data-bind="foreach: catList">
+        <li data-bind="text: name"></li>
+      </ul>
+    </div>
 
+    <!-- Current Cat View -->
+    <div id="cat" data-bind="with: currentCat">
         <h2 id="cat-name" data-bind="text: name"></h2>
         <div id="cat-count" data-bind="text: clickCount"></div>
         <div id="cat-lvl" data-bind="text: catLevel"></div>
-        <img id="cat-img" src="" alt="cute cat"
-          data-bind="click: $parent.incrementCounter, attr: {src: imgSrc}">
+        <img id="cat-img"
+          data-bind="click: $parent.incrementCounter,
+          attr: {src: imgSrc, alt: alt}">
         <div>
-          <h3>Cat's Nicknames</h3>
-          <ul id='cat-ncknms' data-bind="foreach: nickNames">
-            <li data-bind="text: $data"></li>
-          </ul>
+            <h3>Cat's Nicknames</h3>
+            <ul id='cat-ncknms' data-bind="foreach: nickNames">
+              <li data-bind="text: $data"></li>
+            </ul>
         </div>
+    </div>
     <script src="js/lib/knockout-3.2.0.js"></script>
+    <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.2.1/jquery.min.js"></script>
     <script src="js/app.js"></script>
 </body>
 </html>
