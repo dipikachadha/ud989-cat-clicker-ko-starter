@@ -1,9 +1,11 @@
-function Cat () {
-  this.name = ko.observable('Tabby');
-  this.clickCount = ko.observable(0);
-  this.imgSrc = ko.observable('img/22252709_010df3379e_z.jpg');
-  this.nickNames = ko.observableArray(['Timmy', 'Tabbu', 'Tiggy']);
+function Cat (data) {
+  this.name = ko.observable(data.name);
+  this.clickCount = ko.observable(data.clickCount);
+  this.imgSrc = ko.observable(data.imgSrc);
+  this.nickNames = ko.observableArray(data.nickNames);
 
+  // This does not need explicit data reference. It is actively computed as per
+  // data.clickCount specification.
   this.catLevel = ko.computed (_ => {
     const clicks = this.clickCount();
     switch (true) {
@@ -21,7 +23,13 @@ function AppViewModel () {
   // We make a currentCat KO observable object from raw cat data. The data
   // differs from the returned object since it has all it's properties as KO
   // observables and has added KO functions like catLevel.
-  this.currentCat = ko.observable(new Cat());
+  this.currentCat = ko.observable(new Cat({
+    name: 'Tabby',
+    clickCount: 0,
+    imgSrc: 'img/22252709_010df3379e_z.jpg',
+    nickNames: ['Timmy', 'Tabbu', 'Tiggy']
+    }
+  ));
 
   this.incrementCounter = _ => {
     // The HTML uses with: currentCat context, and calls incrementCounter in
